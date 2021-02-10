@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Low Effort Slides</title>
+<style>
+body { font-size: 20pt; font-family: sans-serif; line-height: 1.5; background-color: #fdf6e3; color: #002b36; overflow: hidden; }
+main { margin: 0 auto; max-width: 50rem; }
+section { height: 100vh; display: flex; flex-direction: column; justify-content: center; border-bottom: 1px solid black; position: relative; }
+section > div:last-of-type { position: absolute; right: 0; bottom: 0; text-align: right; font-size: .8em; }
+pre { max-width: 100%; overflow-x: auto; }
+</style>
+<script>
+var idx = parseInt(location.href.split("#").pop());
+if (isNaN(idx)) { idx = 1; }
+function next() { idx += 1; if (document.getElementById("" + idx) == null) { idx -= 1; } location.href = "#" + idx; }
+function prev() { if (idx > 1) { idx -= 1; } location.href = "#" + idx; }
+document.addEventListener("keydown", e => { if (e.key == "PageDown" || e.key == "ArrowRight") { next(); } else if (e.key == "PageUp" || e.key == "ArrowLeft") { prev(); } });
+document.addEventListener("wheel", e => { if (e.deltaY > 0) { next(); } else { prev(); } });
+</script>
+</head>
+
+<body>
+
+<main>
+
+<section id="1">
+<h1> Low Effort Slides </h1>
+<h4> &hellip; if you don't have time for LaTeX </h4>
+<p> Made without much consideration by <a href="https://andreaskroepelin.de">Andreas Kröpelin</a> </p>
+<div> # 1 </div>
+</section>
+
+<section id="2">
+<h2> How to use </h2>
+<p> Modify this template file (get it from GitHub): </p>
+<pre><code>$ git clone https://github.com/andreasKroepelin/loweffortslides.git</code></pre>
+<p> One <code>&lt;section&gt;</code> per slide: </p>
+<pre><code>&lt;section id="42"&gt;
+    &lt;h2&gt; slide title &lt;/h2&gt;
+    &lt;p&gt; some content &lt;/p&gt;
+    &lt;div&gt; # 42 &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+<p> Last <code>&lt;div&gt;</code> can contain slide number. </p>
+<div> # 2 </div>
+</section>
+
+<section id="3">
+<h2> How to navigate </h2>
+<ul>
+    <li> next slide: press <kbd>PgDn</kbd> or <kbd>&rarr;</kbd>, or scroll down </li>
+    <li> previous slide: press <kbd>PgUp</kbd> or <kbd>&larr;</kbd>, or scroll up </li>
+    <li> set anchor part in URL to slide number (<code>&hellip;/&hellip;/file.html#42</code>)
+</ul>
+<div> # 3 </div>
+</section>
+
+<section id="4">
+<h2> Behind the scenes: CSS </h2>
+<p> Minimal use of CSS: </p>
+<div style="display: grid; grid-template-columns: auto auto;">
+<div>
+<pre style="font-size: .7em;"><code>body {
+    font-size: 20pt;
+    font-family: sans-serif;
+    line-height: 1.5;
+    background-color: #fdf6e3;
+    color: #002b36;
+    overflow: hidden;
+}
+main {
+    margin: 0 auto;
+    max-width: 50rem;
+}
+section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid black;
+    position: relative;
+}</code></pre>
+</div>
+<div>
+<pre style="font-size: .7em;"><code>section div:last-of-type {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    text-align: right;
+    font-size: .8em;
+}
+pre {
+    max-width: 100%;
+    overflow-x: auto;
+}</code></pre>
+</div>
+</div>
+<div> # 4 </div>
+</section>
+
+<section id="5">
+<h2> Behind the scenes: JS </h2>
+<p> Even less JavaScript: </p>
+<pre style="font-size: .7em;"><code>var idx = parseInt(location.href.split("#").pop());
+if (isNaN(idx)) { idx = 1; }
+function next() {
+    idx += 1;
+    if (document.getElementById("" + idx) == null) { idx -= 1; }
+    location.href = "#" + idx;
+}
+function prev() {
+    if (idx &gt; 1) { idx -= 1; }
+    location.href = "#" + idx;
+}
+document.addEventListener("keydown", e =&gt; {
+    if (e.key == "PageDown" || e.key == "ArrowRight") {
+        next();
+    } else if (e.key == "PageUp" || e.key == "ArrowLeft") {
+        prev();
+    }
+});
+document.addEventListener("wheel", e =&gt; {
+    if (e.deltaY &gt; 0) { next(); } else { prev(); }
+});</code></pre>
+<div> # 5 </div>
+</section>
+
+</main>
+</body>
+</html>
